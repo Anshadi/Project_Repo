@@ -1,9 +1,10 @@
 [build]
-  command = "flutter build web"
+  # Don’t let Netlify try to build Flutter (since it doesn’t have Flutter SDK by default)
+  command = ""
   publish = "build/web"
 
 [build.environment]
-  FLUTTER_WEB = "true"
+  NODE_VERSION = "18"
 
 [[redirects]]
   from = "/*"
