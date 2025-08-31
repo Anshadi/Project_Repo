@@ -27,6 +27,7 @@ com\voice\shopping\model\SharedList.class
 com\voice\shopping\model\ShoppingCategory.class
 com\voice\shopping\dto\VoiceCommandRequest.class
 com\voice\shopping\model\User.class
+com\voice\shopping\config\EnvironmentConfig.class
 com\voice\shopping\model\Product.class
 com\voice\shopping\service\UserService.class
 com\voice\shopping\config\GlobalExceptionHandler.class
