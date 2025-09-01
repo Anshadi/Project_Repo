@@ -12,8 +12,8 @@ RUN apt-get update && apt-get install -y \
 
 # Create flutter user to avoid ownership issues
 RUN useradd -m -s /bin/bash flutteruser && \
-    mkdir -p /usr/local/flutter && \
-    chown flutteruser:flutteruser /usr/local/flutter
+    mkdir -p /usr/local/flutter /app && \
+    chown flutteruser:flutteruser /usr/local/flutter /app
 
 # Switch to flutter user
 USER flutteruser
@@ -22,15 +22,15 @@ USER flutteruser
 RUN git clone https://github.com/flutter/flutter.git -b stable --depth 1 /usr/local/flutter
 ENV PATH="/usr/local/flutter/bin:/usr/local/flutter/bin/cache/dart-sdk/bin:${PATH}"
 
-# Create app directory
+# Create app directory and set working directory
 WORKDIR /app
 
 # Copy pubspec files first for better caching
-COPY pubspec.* ./
+COPY --chown=flutteruser:flutteruser pubspec.* ./
 RUN flutter pub get
 
-# Copy the rest of the files
-COPY . .
+# Copy the rest of the files with proper ownership
+COPY --chown=flutteruser:flutteruser . .
 
 # Build web app
 RUN flutter build web
