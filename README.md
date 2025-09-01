@@ -45,6 +45,11 @@ A complete voice-enabled shopping application with Flutter frontend and Spring B
 - **http**: REST API communication
 - **permission_handler**: Microphone permissions
 
+## Deployment
+
+- **Frontend**: Hosted on [Netlify](https://spontaneous-sherbet-a72ea7.netlify.app/)
+- **Backend**: Hosted on [Railway](https://projectrepobackend-production.up.railway.app)
+
 ## Project Structure
 
 ```
@@ -289,5 +294,3 @@ When backend is not available, the app shows mock data for demonstration:
 - Push notifications for shopping reminders
 
 ---
-
-
