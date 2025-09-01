@@ -6,7 +6,7 @@ import '../models/shopping_item.dart';
 import 'user_service.dart';
 
 class ApiService {
-  static const String baseUrl = 'https://projectrepobackend-production.up.railway.app';
+  static const String baseUrl = 'https://project-repo-backend-1-3oi6.onrender.com';
 
   // Get current user ID dynamically
   static String get userId => UserService.currentUserId;
