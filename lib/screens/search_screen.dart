@@ -26,9 +26,9 @@ class _SearchScreenState extends State<SearchScreen> {
   }
 
   Future<void> _loadAllProducts() async {
-    if (mounted) {
-      setState(() {
-        _isLoading = true;
+    if (mounted) {          // Loading state if mounted because there could happen a chance when the user is performed activity and then clicked back to another screen ,
+      setState(() {          // so in that case , when asynchronous response comes ,
+        _isLoading = true;      //  it will cause crash because the screen is moved , so before setting the state we check whether the user is on the same screen that the widget is still visible in the widget tree.
       });
     }
 
