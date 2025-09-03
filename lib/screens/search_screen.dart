@@ -323,7 +323,7 @@ class _SearchScreenState extends State<SearchScreen> {
                           hintText: 'Search for items...',
                           prefixIcon: const Icon(Icons.search),
                           suffixIcon: _searchController.text.isNotEmpty
-                              ? IconButton(
+                              ? IconButton(                                      // It is for when we type , the cross that appears that clears the text completly .
                                   icon: const Icon(Icons.clear),
                                   onPressed: _clearSearch,
                                 )
