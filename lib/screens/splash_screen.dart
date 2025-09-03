@@ -33,7 +33,7 @@ class _SplashScreenState extends State<SplashScreen> {
     await Future.delayed(const Duration(seconds: 3));
 
     // Navigate to main app
-    if (mounted) {
+    if (mounted) {                                    // It is where i as a user see the logo screen 
       Navigator.of(context).pushReplacement(
         MaterialPageRoute(
           builder: (context) => MainNavigation(
