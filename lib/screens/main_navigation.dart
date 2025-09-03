@@ -38,7 +38,7 @@ class _MainNavigationState extends State<MainNavigation> {
             _currentIndex = index;
           });
         },
-        items: const [
+        items: const [                  //Items property of Bottom navigation Bar , No children or child here , Expects list of items - having Icon and label
           BottomNavigationBarItem(
             icon: Icon(Icons.list_alt),
             label: 'Shopping List',
