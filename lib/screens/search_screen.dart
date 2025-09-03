@@ -269,8 +269,8 @@ class _SearchScreenState extends State<SearchScreen> {
     }
   }
 
-  void _showErrorMessage(String message) {
-    if (!mounted) return;
+  void _showErrorMessage(String message) {            //Here instead of two methods , I could have used a single boolean var or better for many options 
+    if (!mounted) return;                            // I could have used Enum , but in this way the code is more cleaner , so i have used this 
     ScaffoldMessenger.of(context).showSnackBar(
       SnackBar(
         content: Text(message),
