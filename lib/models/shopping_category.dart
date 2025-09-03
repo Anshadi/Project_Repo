@@ -127,7 +127,7 @@ class ShoppingCategory {
   bool operator ==(Object other) =>
       identical(this, other) ||
       other is ShoppingCategory &&
-          runtimeType == other.runtimeType &&
+          runtimeType == other.runtimeType &&      //here i am ensuring that both belongs to the same class and not the subclass .
           name == other.name;
 
   @override
