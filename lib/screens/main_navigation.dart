@@ -8,7 +8,7 @@ class MainNavigation extends StatefulWidget {
   final VoidCallback onThemeToggle;
 
   const MainNavigation({
-    super.key,
+    super.key,                              //Here we have used key in the Main Navigation , so that when flutter builds it again on the state change , so it builds only the nescessary things
     required this.onThemeToggle,
   });
 
