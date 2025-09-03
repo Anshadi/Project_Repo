@@ -427,7 +427,7 @@ class _SearchScreenState extends State<SearchScreen> {
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
                             Icon(
-                              Icons.search_off,
+                              Icons.search_off,        //In case , we get nothing when we search , it shows a search icon with cross and informs about it to the user
                               size: 64,
                               color: Colors.grey[400],
                             ),
