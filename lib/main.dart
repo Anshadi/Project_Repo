@@ -72,7 +72,7 @@ class _VoiceShoppingAppState extends State<VoiceShoppingApp> {
           foregroundColor: Colors.white,
         ),
       ),
-      themeMode: _isDarkMode ? ThemeMode.dark : ThemeMode.light,
+      themeMode: _isDarkMode ? ThemeMode.dark : ThemeMode.light,          // here i do not need to mention the keyword theme and darkTheme , These are inbuilt words in Flutter , Will get automatically choosen when we choose ThemeMode.dark or ThemeMode.light .
       home: SplashScreen(onThemeToggle: _toggleTheme),
       debugShowCheckedModeBanner: false,
     );
