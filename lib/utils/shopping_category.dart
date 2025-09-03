@@ -179,7 +179,7 @@ class CategoryHelper {
 
   static List<DropdownMenuItem<String>> getCategoryDropdownItems() {
     return ShoppingCategory.getAllCategories().map((category) {
-      return DropdownMenuItem<String>(
+      return DropdownMenuItem<String>(                              //Here I have Used DropDownMenu Item which is a inbuilt class in Flutter material.dart
         value: category.name,
         child: Row(
           children: [
