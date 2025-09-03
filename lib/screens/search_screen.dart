@@ -281,7 +281,7 @@ class _SearchScreenState extends State<SearchScreen> {
 
   void _showSuccessMessage(String message) {
     if (!mounted) return;
-    ScaffoldMessenger.of(context).showSnackBar(
+    ScaffoldMessenger.of(context).showSnackBar(            //SnackBar is used for below popups 
       SnackBar(
         content: Text(message),
         backgroundColor: Colors.green,
