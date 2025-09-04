@@ -9,12 +9,12 @@ class SpeechService {
   // Initialize speech recognition
   static Future<bool> initialize() async {
     // Request microphone permission
-    final status = await Permission.microphone.request();
+    final status = await Permission.microphone.request();            //   Used Inbuilt Method - request() and granted .
     if (status != PermissionStatus.granted) {
       return false;
     }
 
-    // Initialize speech to text
+    // Method to Initialize speech to text
     _speechEnabled = await _speechToText.initialize(
       onError: (error) => debugPrint('Speech recognition error: $error'),
       onStatus: (status) => debugPrint('Speech recognition status: $status'),
@@ -27,12 +27,12 @@ class SpeechService {
   static bool get isAvailable => _speechEnabled;
 
   // Check if currently listening
-  static bool get isListening => _speechToText.isListening;
+  static bool get isListening => _speechToText.isListening;          // isListening is a built-in property of the SpeechToText class.
 
   // Start listening
   static Future<void> startListening({
-    required Function(String) onResult,
-    required Function(String) onError,
+    required Function(String) onResult,                        // It is the shorthand of void Function(String) which is onResult 
+    required Function(String) onError,                    // Have defined Custom Callbacks - OnResult and OnError 
   }) async {
     if (!_speechEnabled) {
       onError('Speech recognition not available');
@@ -40,11 +40,11 @@ class SpeechService {
     }
 
     await _speechToText.listen(
-      onResult: (result) {
-        onResult(result.recognizedWords);
-      },
+      onResult: (result) {                // onResult and onError in speech_to_text (Built-in Callbacks) But here we have above also defined the custom callbacks 
+        onResult(result.recognizedWords);            // so when builtin callback is called , inside it , we call our custom ones like here - OnResult 
+      },                                          // here built-in callbacks handle the interaction with the speech engine. The custom ones allow our app to react to events 
       listenFor: const Duration(seconds: 30),
-      pauseFor: const Duration(seconds: 3),
+      pauseFor: const Duration(seconds: 3),          
       listenOptions: stt.SpeechListenOptions(
         partialResults: true,
         cancelOnError: true,
@@ -52,6 +52,9 @@ class SpeechService {
       localeId: 'en_US', // Can be changed for multilingual support
     );
   }
+
+  // Here there is no problem in the name conflict of both built-in and the custom ones because - the built in is only available in listen so we use it like method_name :  , 
+  // but in the custom one , we pass the value to the method_name( values )
 
   // Stop listening
   static Future<void> stopListening() async {
@@ -64,9 +67,9 @@ class SpeechService {
   }
 
   // Get available locales for multilingual support
-  static Future<List<stt.LocaleName>> getAvailableLocales() async {
-    if (!_speechEnabled) return [];
-    return await _speechToText.locales();
+  static Future<List<stt.LocaleName>> getAvailableLocales() async {     // It returns a list of locales that is available languages that it supports 
+    if (!_speechEnabled) return [];                  // If speech Engine is not ready , then save the unnescessary processing and return empty list 
+    return await _speechToText.locales();          // locales() is a inbuilt function of this package 
   }
 
   // Check microphone permission
