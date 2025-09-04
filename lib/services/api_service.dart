@@ -50,7 +50,7 @@ class ApiService {
           .post(
             Uri.parse('$baseUrl/voice/process'),
             headers: headers,
-            body: jsonEncode({
+            body: jsonEncode({                    // Sending data in encoded form
               'userId': userId,
               'query': query,
             }),
@@ -169,7 +169,7 @@ class ApiService {
   // GET /search - Search products with optional query
   static Future<List<Product>> searchProducts([String? query]) async {
     try {
-      final uri = query != null && query.isNotEmpty
+      final uri = query != null && query.isNotEmpty        // One is to check whether it is null or not , another is for checking that it is not empty string
           ? Uri.parse('$baseUrl/search?query=$query')
           : Uri.parse('$baseUrl/search/all');
 
@@ -254,7 +254,7 @@ class ApiService {
 
       if (response.statusCode == 200) {
         final List<dynamic> data = json.decode(response.body);
-        return data.cast<Map<String, dynamic>>();
+        return data.cast<Map<String, dynamic>>();                // it is returning in the form of [,{ "id" :1 , "name" : "Something"},]
       } else {
         throw Exception('Failed to load history: ${response.statusCode}');
       }
