@@ -24,7 +24,7 @@ A complete voice-enabled shopping application with Flutter frontend and Spring B
 
 ## Deployment
 
-- **Frontend**: Hosted on [Netlify](https://spontaneous-sherbet-a72ea7.netlify.app/)
+- **Frontend**: Hosted on [Render](https://project-repo-0.onrender.com/)
 
 ## Project Structure
 
