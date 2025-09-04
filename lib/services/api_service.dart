@@ -12,14 +12,14 @@ class ApiService {
   static String get userId => UserService.currentUserId;
 
   // Headers for API requests
-  static const Map<String, String> headers = {
-    'Content-Type': 'application/json',
+  static const Map<String, String> headers = {    // As we are sending data to api , it is nescessary to mention the content type 
+    'Content-Type': 'application/json',          // so that it can understand that it is in json format .
   };
 
-  // Test backend connectivity
-  static Future<bool> testBackendConnection() async {
-    try {
-      final response = await http
+  // Testing  backend connectivity
+  static Future<bool> testBackendConnection() async {      //async is when we once call the function , then our ui does not get stuck ,
+    try {                                                  // it gets the response from the api , while then we can do other things and later on
+      final response = await http                          // on result , execution  continues from there 
           .get(
             Uri.parse('$baseUrl/health'),
             headers: headers,
