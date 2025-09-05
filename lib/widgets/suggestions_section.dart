@@ -22,9 +22,9 @@ class SuggestionsSection extends StatelessWidget {
         boxShadow: [
           BoxShadow(
             color: Colors.grey.withOpacity(0.1),
-            spreadRadius: 1,
+            spreadRadius: 1,                          //  to create shadow effects used in box Shadow
             blurRadius: 6,
-            offset: const Offset(0, 3),
+            offset: const Offset(0, 3),            // This offset creates a natural shadow effect, making the widget appear to "float" slightly above the surface.
           ),
         ],
       ),
