@@ -32,7 +32,7 @@ class HistoryStatsCard extends StatelessWidget {
                 const SizedBox(width: 12),
                 Text(
                   'Shopping Statistics',
-                  style: Theme.of(context).textTheme.titleLarge?.copyWith(
+                  style: Theme.of(context).textTheme.titleLarge?.copyWith(    // Uses title Large of app theme and .copywith() allows its specific properties to be overriden
                         fontWeight: FontWeight.bold,
                       ),
                 ),
