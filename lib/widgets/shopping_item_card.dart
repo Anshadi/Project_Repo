@@ -21,9 +21,9 @@ class ShoppingItemCard extends StatelessWidget {
   });
 
   void _showQuantityDialog(BuildContext context) {
-    showDialog(
-      context: context,
-      builder: (context) => _QuantityDialog(
+    showDialog(                                              // Used to show the pop up on the current screen 
+      context: context,                                      // Passes Build context to it to determine where the dialog is displayed in the widget tree
+      builder: (context) => _QuantityDialog(                // An anonymous function that takes a BuildContext and returns a widget here _QuantityDialog .
         currentQuantity: item.quantity,
         itemName: item.name,
         onUpdate: onUpdateQuantity,
