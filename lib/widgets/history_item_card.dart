@@ -4,8 +4,8 @@ import '../services/theme_service.dart';
 
 class HistoryItemCard extends StatelessWidget {
   final ShoppingHistory history;
-  final VoidCallback? onTap;
-
+  final VoidCallback? onTap;              // Void Callback? - A callback function that takes no arguments and return no value and can be null 
+                                          // Here OnTap is just a variable declared  and not the on built property On Tap .
   const HistoryItemCard({
     super.key,
     required this.history,
@@ -41,7 +41,7 @@ class HistoryItemCard extends StatelessWidget {
       ),
       child: InkWell(
         borderRadius: BorderRadius.circular(12),
-        onTap: onTap,
+        onTap: onTap,      // Here left side in-built property and in right our custom made callback
         child: Padding(
           padding: const EdgeInsets.all(16.0),
           child: Row(
@@ -127,8 +127,8 @@ class HistoryItemCard extends StatelessWidget {
                 children: [
                   if (history.price != null)
                     Text(
-                      '\$${(history.price! * history.quantity).toStringAsFixed(2)}',
-                      style: const TextStyle(
+                      '\$${(history.price! * history.quantity).toStringAsFixed(2)}',    // History.price! --> means price not null , \$$ --> escape charachter used for showing dollar sign
+                      style: const TextStyle(                                           // toStringAsFixed(2)  --> Till 2 decimal places 
                         fontSize: 16,
                         fontWeight: FontWeight.bold,
                         color: Colors.green,
