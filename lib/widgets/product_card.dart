@@ -9,7 +9,7 @@ class ProductCard extends StatelessWidget {
   const ProductCard({
     super.key,
     required this.product,
-    required this.onAddToList,
+    required this.onAddToList,              // Its functionality is already defined 
   });
 
   IconData _getCategoryIcon(String category) {
