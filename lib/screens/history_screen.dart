@@ -30,7 +30,7 @@ class _HistoryScreenState extends State<HistoryScreen>
   @override
   void initState() {
     super.initState();
-    _tabController = TabController(length: 2, vsync: this);
+    _tabController = TabController(length: 2, vsync: this);        //  vsync acts as a signal that tells your animations when to update, ensuring they are smooth, efficient, and synchronized with the display.
     _loadHistory();
   }
 
@@ -122,7 +122,7 @@ class _HistoryScreenState extends State<HistoryScreen>
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
+      appBar: AppBar(                         
         title: const Text('Shopping History'),
         bottom: TabBar(
           controller: _tabController,
@@ -131,7 +131,7 @@ class _HistoryScreenState extends State<HistoryScreen>
             Tab(icon: Icon(Icons.analytics), text: 'Analytics'),
           ],
         ),
-        actions: [
+        actions: [                    // AppBar is used to add a filter selection dropdown to the shopping history screen. 
           PopupMenuButton<String>(
             onSelected: (filter) {
               setState(() {
