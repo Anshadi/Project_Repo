@@ -16,8 +16,8 @@ class VoiceInputWidget extends StatefulWidget {
 }
 
 class _VoiceInputWidgetState extends State<VoiceInputWidget>
-    with SingleTickerProviderStateMixin {
-  bool _isListening = false;
+    with SingleTickerProviderStateMixin {                //  provides a single "ticker" to drive animations within a StatefulWidget. 
+  bool _isListening = false;                            // A ticker is a refresh rate signal that fires a callback on every frame, which an AnimationController uses to generate new animation values.
   String _currentText = '';
   late AnimationController _animationController;
   late Animation<double> _pulseAnimation;
@@ -25,18 +25,18 @@ class _VoiceInputWidgetState extends State<VoiceInputWidget>
   @override
   void initState() {
     super.initState();
-    _animationController = AnimationController(
-      duration: const Duration(milliseconds: 1000),
-      vsync: this,
+    _animationController = AnimationController(            
+      duration: const Duration(milliseconds: 1000),     // Initializes the animation controller with a duration of 1 second.
+      vsync: this,                                    //It his ties the animation to the widget's lifecycle, ensuring that the ticker only fires when the widget's subtree is active and visible.
     );
-    _pulseAnimation = Tween<double>(
-      begin: 1.0,
+    _pulseAnimation = Tween<double>(            
+      begin: 1.0,                            // Creates a pulse animation that scales between 1.0 and 1.3 (a 30% increase in size).
       end: 1.3,
     ).animate(CurvedAnimation(
       parent: _animationController,
-      curve: Curves.easeInOut,
+      curve: Curves.easeInOut,           // Curves.easeInOut: Makes the animation smooth, easing in and out.
     ));
-  }
+  }                                // This setup creates a visual effect that indicates the app is actively listening.
 
   @override
   void dispose() {
@@ -61,9 +61,9 @@ class _VoiceInputWidgetState extends State<VoiceInputWidget>
       _currentText = '';
     });
 
-    // Start pulse animation
-    _animationController.repeat(reverse: true);
-
+    // Start pulse animation                   This line starts a continuous pulsing animation that visually indicates the app is listening for voice input.
+    _animationController.repeat(reverse: true);   //  Play forward (from 1.0 to 1.3 scale) , Then play backward (from 1.3 to 1.0 scale) , And repeat this cycle continuously
+                                                  // This creates a "breathing" effect on the UI element (like a microphone icon pulsing).
     await SpeechService.startListening(
       onResult: (text) {
         if (mounted) {
@@ -104,7 +104,7 @@ class _VoiceInputWidgetState extends State<VoiceInputWidget>
   }
 
   void _showErrorMessage(String message) {
-    ScaffoldMessenger.of(context).showSnackBar(
+    ScaffoldMessenger.of(context).showSnackBar(            // SnackBar - That Below Pop-up
       SnackBar(
         content: Text(message),
         backgroundColor: Colors.red,
@@ -153,8 +153,8 @@ class _VoiceInputWidgetState extends State<VoiceInputWidget>
 
           // Microphone Button
           Center(
-            child: GestureDetector(
-              onTap: _isListening ? _stopListening : _startListening,
+            child: GestureDetector(        // For detecting taps
+              onTap: _isListening ? _stopListening : _startListening,      // To toggle state from start and stop listening based on current state
               child: AnimatedBuilder(
                 animation: _pulseAnimation,
                 builder: (context, child) {
@@ -211,7 +211,7 @@ class _VoiceInputWidgetState extends State<VoiceInputWidget>
                 color: Colors.grey[100],
                 borderRadius: BorderRadius.circular(8),
               ),
-              width: double.infinity,
+              width: double.infinity,      // It  makes a widget expand horizontally to fill all available width in its parent container.
               child: Text(
                 _currentText,
                 style: const TextStyle(
@@ -261,7 +261,7 @@ class _VoiceInputWidgetState extends State<VoiceInputWidget>
           Wrap(
             alignment: WrapAlignment.center,
             spacing: 8,
-            runSpacing: 8,
+            runSpacing: 8,      // controls the vertical spacing between lines (or "runs") of widgets , defines the vertical space between rows when widgets wrap to a new line.
             children: [
               _buildExampleChip('Example ==>'),
               _buildExampleChip('Add 2 milk to list'),
