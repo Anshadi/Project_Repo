@@ -63,10 +63,10 @@ class SuggestionsSection extends StatelessWidget {
           const SizedBox(height: 16),
 
           // Suggestions from OpenAI recommendations API
-          FutureBuilder<List<String>>(
-            future: ApiService.getRecommendations(),
-            builder: (context, snapshot) {
-              if (snapshot.hasData && snapshot.data!.isNotEmpty) {
+          FutureBuilder<List<String>>(                      // When We use FutureBuilder, you provide a builder function with two parameters: future and builder
+            future: ApiService.getRecommendations(),      // This snapshot is provided by builder function in Future Builder
+            builder: (context, snapshot) {               // Flutter automatically creates and updates this snapshot object as the Future progresses through different states.
+              if (snapshot.hasData && snapshot.data!.isNotEmpty) {      // If we get the data from API
                 return Wrap(
                   spacing: 8,
                   runSpacing: 8,
@@ -77,7 +77,7 @@ class SuggestionsSection extends StatelessWidget {
                     );
                   }).toList(),
                 );
-              } else if (suggestions.isNotEmpty) {
+              } else if (suggestions.isNotEmpty) {          // If API Fails then local list of suggestions
                 return Wrap(
                   spacing: 8,
                   runSpacing: 8,
@@ -88,7 +88,7 @@ class SuggestionsSection extends StatelessWidget {
                     );
                   }).toList(),
                 );
-              } else {
+              } else {                                // If both fails API And Local List Of Suggeestions then as a fallback show these products
                 // Fallback to database products
                 return Wrap(
                   spacing: 8,
@@ -141,7 +141,7 @@ class _SuggestionChip extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return InkWell(
+    return InkWell(            // When we click on a suggestions it trigger the OnTap callback which is passed to it
       onTap: onTap,
       borderRadius: BorderRadius.circular(20),
       child: Container(
