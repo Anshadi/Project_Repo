@@ -48,8 +48,8 @@ class ShoppingItemCard extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       margin: const EdgeInsets.symmetric(horizontal: 16, vertical: 4),
-      child: Dismissible(
-        key: Key(item.id),
+      child: Dismissible(                        // Provides the functionality of swipe to delete to the widget 
+        key: Key(item.id),                      // Provides a key to uniquely identify this dissimissible widget for each element 
         background: Container(
           decoration: BoxDecoration(
             color: Colors.red,
@@ -76,9 +76,9 @@ class ShoppingItemCard extends StatelessWidget {
             ],
           ),
         ),
-        direction: DismissDirection.endToStart,
-        confirmDismiss: (direction) async {
-          return await showDialog<bool>(
+        direction: DismissDirection.endToStart,        // It Allows the widget to be dismissed by swiping from right to left.
+        confirmDismiss: (direction) async {           // It is a callback function that is called when the user starts to dismiss the widget .  (direction) async { ... }: it is an asynchronous function that takes the swipe direction as input.
+          return await showDialog<bool>(              // Shows a dialog and waits for the user's response. so that the user wants to confirm the deletion
             context: context,
             builder: (context) => AlertDialog(
               title: const Text('Remove Item'),
@@ -100,21 +100,21 @@ class ShoppingItemCard extends StatelessWidget {
             ),
           );
         },
-        onDismissed: (direction) => onRemove(),
-        child: Card(
+        onDismissed: (direction) => onRemove(),          // A callback function that is called when the widget is dismissed. Calls the onRemove function (passed to the widget) when the widget is dismissed.
+        child: Card(                                     // The widget that will be displayed inside the Dismissible.
           elevation: 2,
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(12),
           ),
           child: InkWell(
             borderRadius: BorderRadius.circular(12),
-            onTap: () => _showQuantityDialog(context),
+            onTap: () => _showQuantityDialog(context),      //  A callback function that is called when the card is tapped.  _showQuantityDialog(context): Calls a method to show a dialog for updating the item's quantity.
             child: Padding(
               padding: const EdgeInsets.all(16.0),
-              child: Row(
+              child: Row(    
                 children: [
                   // Category Icon
-                  CategoryHelper.buildCategoryIcon(item.category, size: 24),
+                  CategoryHelper.buildCategoryIcon(item.category, size: 24),      // Builds item based on item category , but here we set the size
 
                   const SizedBox(width: 16),
 
@@ -188,7 +188,7 @@ class ShoppingItemCard extends StatelessWidget {
                                       borderRadius: BorderRadius.circular(8),
                                     ),
                                     child: Row(
-                                      mainAxisSize: MainAxisSize.min,
+                                      mainAxisSize: MainAxisSize.min,        //  Makes the Row take up only as much horizontal space as its children need.
                                       children: [
                                         Icon(
                                           Icons.priority_high,
@@ -332,10 +332,10 @@ class _QuantityDialogState extends State<_QuantityDialog> {
           const SizedBox(height: 16),
 
           // Quick Select Buttons
-          Wrap(
+          Wrap(                // It Automatically wraps children to the next line if they don't fit in the current line.
             spacing: 8,
             children: [1, 2, 5, 10].map((value) {
-              return ActionChip(
+              return ActionChip(                        // It is to initiate an action related to primary content, often appearing dynamically or contextually within the UI. It only requires a label and OnPressed callback
                 label: Text(value.toString()),
                 onPressed: () => _updateQuantity(value),
                 backgroundColor: _quantity == value
@@ -346,14 +346,14 @@ class _QuantityDialogState extends State<_QuantityDialog> {
           ),
         ],
       ),
-      actions: [
+      actions: [                                        // A list of widgets displayed at the bottom of the dialog (typically buttons).
         TextButton(
           onPressed: () => Navigator.of(context).pop(),
           child: const Text('Cancel'),
         ),
         ElevatedButton(
           onPressed: () {
-            widget.onUpdate(_quantity);
+            widget.onUpdate(_quantity);                // Calls the onUpdate callback passed to the widget, passing the selected quantity (_quantity) .
             Navigator.of(context).pop();
           },
           child: const Text('Update'),
